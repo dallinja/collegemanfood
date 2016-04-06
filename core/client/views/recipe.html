@@ -1,14 +1,14 @@
 <div class="container header-push">
 	<nav class="row recipe-nav">
 		<div class="col-sm-3">
-			<p><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to filter</p>
+			<p><a ui-sref="home"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to filter</a><span ng-click="toggleAdmin()"> (Admin)</span></p>
 		</div>
 		<div class="col-sm-offset-5 col-sm-4 col-md-offset-6 col-md-3">
 			<div class="pull-left">
-				<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Prev recipe
+				<a ui-sref="recipe"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Prev recipe</a>
 			</div>
 			<div class="pull-right">
-				Next recipe <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+				<a ui-sref="recipe">Next recipe <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 			</div>
 		</div>
 	</nav>
@@ -21,17 +21,18 @@
 				<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 				<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 				<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-				<span> 324</span>
+				<span> {{ recipe.ratings.length }}</span>
 			</div>
 		</div>
 		<div class="recipe-details col-sm-offset-2 col-sm-4">
-			<h2 class="text-center">Apple Cumin Pork Ribs</h2>
+			<h2 ng-show="!admin" class="text-center">{{ recipe.name }}</h2>
+			<h2 ng-show="admin" class="text-center"><input ng-model="recipe.name" value="{{ recipe.name }}"></h2>
 			<div class="row">
 				<div class="col-xs-4">
 					<div class="circle orange-bg">
 						<div class="text-center">
 							<label>Prep Time</label>
-							<p>12<span>min</span></p>
+							<p>{{ recipe.prepTime }}<span>min</span></p>
 						</div>
 					</div>
 				</div>
@@ -39,7 +40,7 @@
 					<div class="circle red-bg">
 						<div class="text-center">
 							<label>Cook Time</label>
-							<p>8<span>hrs</span></p>
+							<p>{{ recipe.cookTime }}<span>hrs</span></p>
 						</div>
 					</div>
 				</div>
@@ -56,7 +57,7 @@
 				<div class="col-xs-3">
 					<div class="square yellow-bg">
 						<div class="text-center">
-							<p>700</p>
+							<p>{{ recipe.calories }}</p>
 							<p>cal</p>
 						</div>
 					</div>
@@ -64,7 +65,7 @@
 				<div class="col-xs-3">
 					<div class="square lt-blue-bg">
 						<div class="text-center">
-							<p>36g</p>
+							<p>{{ recipe.protein }}g</p>
 							<p>pro</p>
 						</div>
 					</div>
@@ -72,7 +73,7 @@
 				<div class="col-xs-3">
 					<div class="square lt-green-bg">
 						<div class="text-center">
-							<p>12g</p>
+							<p>{{ recipe.fat }}g</p>
 							<p>fat</p>
 						</div>
 					</div>
@@ -80,7 +81,7 @@
 				<div class="col-xs-3">
 					<div class="square lt-red-bg">
 						<div class="text-center">
-							<p>4g</p>
+							<p>{{ recipe.carbs }}g</p>
 							<p>car</p>
 						</div>
 					</div>
@@ -91,7 +92,7 @@
 					<div>
 						<div class="text-center">
 							<p class="small-label">Man-Servings:</p>
-							<p class="big-label">5</p>
+							<p class="big-label">{{ recipe.servings }}</p>
 						</div>
 					</div>
 				</div>
@@ -99,7 +100,7 @@
 					<div>
 						<div class="text-center">
 							<p class="small-label">Cost per Serv.:</p>
-							<p class="big-label">$3.50</p>
+							<p class="big-label">${{ recipe.totalCost / recipe.servings }}</p>
 						</div>
 					</div>
 				</div>
@@ -107,7 +108,7 @@
 					<div>
 						<div class="text-center">
 							<p class="small-label">Total cost:</p>
-							<p class="big-label">$17.50</p>
+							<p class="big-label">${{ recipe.totalCost }}</p>
 						</div>
 					</div>
 				</div>
@@ -118,46 +119,19 @@
 		<div class="col-sm-offset-1 col-sm-4">
 			<h3 class="text-center">Ingredients</h3>
 			<hr>
-			<div class="row">
-				<div class="measurements col-xs-3">
-					1/2 rack
-				</div>
-				<div class="ingredients col-xs-9">
-					pork ribs
-				</div>
-				<div class="measurements col-xs-3">
-					1 cup
-				</div>
-				<div class="ingredients col-xs-9">
-					diced apples
-				</div>
-				<div class="measurements col-xs-3">
-					1/2 cup
-				</div>
-				<div class="ingredients col-xs-9">
-					chopped onions
-				</div>
-				<div class="measurements col-xs-3">
-					2 Tbs
-				</div>
-				<div class="ingredients col-xs-9">
-					ground cumin
-				</div>
-				<div class="measurements col-xs-3">
-					1 tsp
-				</div>
-				<div class="ingredients col-xs-9">
-					salt
-				</div>
-			</div>	
+			<table class="table table-condensed ingredients">
+				<tr ng-repeat="ingred in recipe.ingredients">
+					<td>{{ ingred.amount }}</td>
+					<td>{{ ingred.unit }}</td>
+					<td>{{ ingred.ingredient }}</td>
+				</tr>
+			</table>
 		</div>
 		<div class="col-sm-offset-2 col-sm-4">
 			<h3 class="text-center">Directions</h3>
 			<hr>
 			<ol>
-				<li>Brown ribs in pan on both sides</li>
-				<li>Chop apples and onions and combine</li>
-				<li>Combine all ingedients in crockpot, turn on, and enjoy!</li>
+				<li ng-repeat="step in recipe.directions">{{ step }}</li>
 			</ol>
 		</div>
 	</div>

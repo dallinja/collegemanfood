@@ -1,5 +1,5 @@
 angular.module('cmf')
-	.controller('mainCtrl', function($scope) {
+	.controller('mainCtrl', function($scope, sampleData) {
 		$scope.test = "hello";
 		$scope.searching = false;
 		$('#searchbar').keydown(function() {
@@ -12,4 +12,5 @@ angular.module('cmf')
 		    	$scope.searching = false;
 		    }
 		 });
+		$scope.recipes = sampleData.getRecipes();
 	})

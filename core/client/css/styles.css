@@ -60,6 +60,9 @@ body {
 .gallery-container {
 	margin: 10px 20px 20px;
 }
+.gallery-container h2 span {
+	font-size: 14px;
+}
 .recipe-gallery {
 	display: flex;
 	flex-flow: row wrap;
@@ -82,10 +85,25 @@ body {
 	border-right: 1px solid #CCC;
 	border-bottom: 1px solid #CCC;
 }
+.recipe-item-edit {
+	position: absolute;
+	background-color: rgba(0,0,0,.3);
+	width: 30px;
+	height: 30px;
+	border-radius: 4px;
+	color: #444;
+	top:0;
+	right: 0;
+	text-align: center;
+	line-height: 30px;
+	font-size: 16px;
+	cursor: pointer;
+}
+.recipe-item-edit:hover {
+	background-color: rgba(0,0,0,.5);
+}
 .recipe-item-img {
 	overflow: hidden;
-
-
 }
 .recipe-item-details h3 {
 	margin: 1em;

@@ -9,16 +9,15 @@ var app = angular
 	            controller: 'mainCtrl'
 	        })
 	        .state('recipe', {
-	            url: '/recipe/:id',
+	            url: '/recipe/:idNumber',
 	            templateUrl: 'views/recipe.html',
-	            controllerUrl: 'controllers/recipeCtrl.js'
-	   //          resolve: {
-				// 	getHero: function(dataService, $stateParams) {
-				// 		var heroId = $stateParams.idNumber;
-				// 		console.log($stateParams)
-				// 		return dataService.getHero(heroId);
-				// 	}
-				// }
+	            controller: 'recipesCtrl',
+	            resolve: {
+					getRecipe: function(sampleData, $stateParams) {
+						var recipeId = $stateParams.idNumber;
+						return sampleData.getRecipe(recipeId);
+					}
+				}
 	        })
 	        .state('login', {
 	            url: '/login',
