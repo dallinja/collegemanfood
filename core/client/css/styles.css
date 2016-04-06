@@ -1,0 +1,139 @@
+/******** SITE GENERAL ********/
+/*** colors ***/
+.orange-bg {
+	background-color: #F5A623;
+}
+.red-bg {
+	background-color: #D0021B;
+}
+.blue-bg {
+	background-color: #4A90E2;
+}
+.yellow-bg {
+	background-color: #FFF796;
+}
+.lt-blue-bg {
+	background-color: #A9BFD8;
+}
+.lt-green-bg {
+	background-color: #B5D692;
+}
+.lt-red-bg {
+	background-color: #EEAEB5;
+}
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	padding:0;
+}
+.wrapper {
+	margin-top: 80px;
+	margin-bottom: 90px;
+}
+
+.navbar-fixed-top {
+	height: 80px;
+}
+.navbar-form .form-control {
+	width: 50%;
+}
+
+.main-container {
+	margin-bottom: 30px;
+}
+.aheader-push {
+	margin-top: 80px;
+}
+
+.searchbar {
+	text-align: center;
+	background: #DDD;
+	padding: 12px;
+}
+.searchbar .form-group {
+	display: inline;
+	width: 70%;
+}
+/********** GALLERY **********/
+.gallery-container {
+	margin: 10px 20px 20px;
+}
+.recipe-gallery {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.recipe-item {
+	margin: 5px;
+	width: 420px;
+	height: 230px;
+	overflow: hidden;
+}
+.recipe-item-img, .recipe-item-details {
+	position: relative;
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+.recipe-item-details {
+	border-top: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+}
+.recipe-item-img {
+	overflow: hidden;
+
+
+}
+.recipe-item-details h3 {
+	margin: 1em;
+}
+.recipe-item-details ul {
+	list-style: none;
+}
+.recipe-item-details .nutrients {
+	padding: 0;
+	width: 210px;
+}
+.recipe-item-details .nutrients div {
+	text-align: center;
+	float: left;
+	padding:10px;
+	/*margin-right: -4px;*/
+	width: 25%;
+	background: #ccc;
+}
+.nutrients {
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 0;
+}
+.nutrients div.cal {
+	background: #FFF796;
+}
+.nutrients div.pro {
+	background: #A9BFD8;
+}
+.nutrients div.fat {
+	background: #B5D692;
+}
+.nutrients div.car {
+	background: #EEAEB5;
+}
+
+/********** LOGIN **********/
+.login-form {
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+/********** FOOTER **********/
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	margin-top: 30px;
+	padding: 30px;
+	background: #666;
+}
