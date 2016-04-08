@@ -78,7 +78,7 @@
 
       <div class="navbar-form searchbar">
         <div class="form-group">
-          <input type="text" id="searchbar" class="form-control" placeholder="Search for meals, ingredients, whatever..." ng-model="search">
+          <input type="text" id="searchbar" class="form-control" placeholder="Search for meals, ingredients, whatever..." ng-model="search" ng-keydown="hideBanners()" ng-keyup="checkEmpty()">
         </div>
         <button class="btn btn-default">Filter</button>
       </div>

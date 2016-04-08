@@ -2,15 +2,14 @@ angular.module('cmf')
 	.controller('mainCtrl', function($scope, sampleData) {
 		$scope.test = "hello";
 		$scope.searching = false;
-		$('#searchbar').keydown(function() {
-				$scope.searching = true;
-		})
-		$('#searchbar').on('keyup', function() {
-			var key = event.keyCode || event.charCode;
-			console.log($scope.search);
-			if( (key == 8 || key == 46) && $scope.search == "a" ) {
-		    	$scope.searching = false;
-		    }
-		 });
+		$scope.hideBanners = function() {
+			$scope.searching = true;
+		}
+		$scope.checkEmpty = function() {
+			if ($scope.search == "") {
+				$scope.searching = false;
+			}
+		}
+
 		$scope.recipes = sampleData.getRecipes();
 	})
