@@ -25,14 +25,15 @@
 			</div>
 		</div>
 		<div class="recipe-details col-sm-offset-2 col-sm-4">
-			<h2 ng-show="!admin" class="text-center">{{ recipe.name }}</h2>
-			<h2 ng-show="admin" class="text-center"><input ng-model="recipe.name" value="{{ recipe.name }}"></h2>
+			<h2 ng-if="!admin" class="text-center">{{ recipe.name }}</h2>
+			<h2 ng-if="admin" class="text-center"><input ng-model="recipe.name" value="{{ recipe.name }}"></h2>
 			<div class="row">
 				<div class="col-xs-4">
 					<div class="circle orange-bg">
 						<div class="text-center">
 							<label>Prep Time</label>
-							<p>{{ recipe.prepTime }}<span>min</span></p>
+							<p ng-if="!admin">{{ recipe.prepTime }}<span>min</span></p>
+							<p ng-if="admin"><input ng-model="recipe.prepTime" value="{{ recipe.prepTime }}"><span>min</span></p>
 						</div>
 					</div>
 				</div>
