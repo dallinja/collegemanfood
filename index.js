@@ -10,7 +10,7 @@ var recipesCtrl = require('./core/server/controllers/recipesCtrl.js')
 
 // Node Server
 var app = express();
-if (config.env === 'DEVELOPMENT') { var port = 9001} else { var port = 80};
+if (config.env === 'DEVELOPMENT') { var port = 9001 } else { var port = 80};
 
 // Middleware
 app.use(bodyParser.json());
