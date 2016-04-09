@@ -20,12 +20,13 @@ angular.module('cmf')
 
 		function UserInfoCtrl($scope, auth) {
   		$scope.auth = auth;
-}
+		}
 
 		$scope.goHome = function() {
     	$state.go('home.gallery');
 			$scope.searching = false;
 		};
+
 		$scope.auth = auth;
 		$scope.recipes = sampleData.getRecipes();
 	})
