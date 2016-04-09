@@ -15,7 +15,7 @@ angular.module('cmf')
 		$scope.goHome = function() {
     	$state.go('home.gallery');
 			$scope.searching = false;
-};
+		};
 
 		$scope.recipes = sampleData.getRecipes();
 	})
