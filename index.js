@@ -4,12 +4,13 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongoose = require('mongoose');
+var config = require('./config.js');
 
 var recipesCtrl = require('./core/server/controllers/recipesCtrl.js')
 
 // Node Server
 var app = express();
-var port = 9001;
+if (config.env === 'DEVELOPMENT') { var port = 9001} else { var port = 80};
 
 // Middleware
 app.use(bodyParser.json());

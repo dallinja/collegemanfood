@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 module.exports = {
 	index: function(req, res, next) {
-		Book
+		Recipe
 		.find(req.query)
 		.exec(function(err, result) {
 			if (err) return next(err);
@@ -12,7 +12,7 @@ module.exports = {
 	},
 
 	show: function(req, res, next) {
-		Book
+		Recipe
 		.findById(req.params.id)
 		.populate('author')
 		// .limit(1)
@@ -24,7 +24,7 @@ module.exports = {
 	},
 
 	create: function(req, res, next) {
-		Book
+		Recipe
 		.create(req.body, function(err, result) {
 			if (err) return next(err);
 			res.status(200).json(result);
@@ -32,7 +32,7 @@ module.exports = {
 	},
 
 	update: function(req, res, next) {
-		Book
+		Recipe
 		.findOneAndUpdate(
 			{ _id: mongoose.Types.ObjectId(req.params.id) },
 			req.body,
@@ -45,7 +45,7 @@ module.exports = {
 	},
 
 	destroy: function(req, res, next) {
-		Book.findByIdAndRemove(req.params.id)
+		Recipe.findByIdAndRemove(req.params.id)
 		.exec(function(err, result) {
 			if (err) return next(err);
 			res.status(200).json(result);
