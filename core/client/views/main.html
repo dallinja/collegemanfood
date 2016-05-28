@@ -76,12 +76,12 @@
 
       <!-- SEARCH BAR -->
 
-      <div class="navbar-form searchbar">
-        <div class="form-group">
-          <input type="text" id="searchbar" class="form-control" placeholder="Search for meals, ingredients, whatever..." ng-model="search" ng-keydown="hideBanners()">
-        </div>
-        <button class="btn btn-default">Filter</button>
-        <button ng-show="searching" ng-click="goHome()" class="btn btn-default">Back</button>
+    <div class="navbar-form searchbar">
+      <div class="form-group">
+        <input type="text" id="searchbar" class="form-control" placeholder="Search for meals, ingredients, whatever..." ng-model="search" ng-keydown="hideBanners()" ng-keyup="setFiltered(filtered)">
       </div>
+      <button class="btn btn-default">Filter</button>
+      <button ng-show="searching" ng-click="goHome()" class="btn btn-default">Back</button>
+    </div>
 
-      <div ui-view="dashboard"></div>
+    <div ui-view="dashboard"></div>

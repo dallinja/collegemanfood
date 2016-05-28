@@ -5,53 +5,53 @@ var app = angular
 		'angular-storage',
 		'angular-jwt'])
 	.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvider, jwtInterceptorProvider) {
-				authProvider.init({
-					domain: 'collegemanfood.auth0.com',
-					clientID: 'Vac7fLKAvHcMuCPsx8ZzeFv3mo9mB3zz'
-				});
-				authProvider.on('loginSuccess', function($location, profilePromise, idToken, store) {
-				  console.log("Login Success");
-				  profilePromise.then(function(profile) {
-				    store.set('profile', profile);
-				    store.set('token', idToken);
-				  });
-				  $location.path('/');
-				});
+		authProvider.init({
+			domain: 'collegemanfood.auth0.com',
+			clientID: 'Vac7fLKAvHcMuCPsx8ZzeFv3mo9mB3zz'
+		});
+		authProvider.on('loginSuccess', function($location, profilePromise, idToken, store) {
+		  console.log("Login Success");
+		  profilePromise.then(function(profile) {
+		    store.set('profile', profile);
+		    store.set('token', idToken);
+		  });
+		  $location.path('/');
+		});
 
-				authProvider.on('loginFailure', function() {
-				   // Error Callback
-				});
+		authProvider.on('loginFailure', function() {
+		   // Error Callback
+		});
 
-				jwtInterceptorProvider.tokenGetter = ['store', function(store) {
-			    // Return the saved token
-			    return store.get('token');
-			  }];
+		jwtInterceptorProvider.tokenGetter = ['store', function(store) {
+		    // Return the saved token
+		    return store.get('token');
+		}];
 
-			  $httpProvider.interceptors.push('jwtInterceptor');
+		$httpProvider.interceptors.push('jwtInterceptor');
 
-				$urlRouterProvider.otherwise('/home');
+		$urlRouterProvider.otherwise('/home');
         $stateProvider
 	        .state('home', {
 	            templateUrl: 'views/main.html',
 	            controller: 'mainCtrl'
 	        })
-					.state('home.gallery', {
+			.state('home.gallery', {
 	            url: '/home',
-							parent:'home',
+				parent:'home',
 	            views:{
-								'dashboard@home':{
-									templateUrl: 'views/homeGallery.html',
-								}
-							}
+					'dashboard@home':{
+						templateUrl: 'views/homeGallery.html',
+					}
+				}
 	        })
-					.state('home.search', {
+			.state('home.search', {
 	            url: '/search',
-							parent:'home',
+				parent:'home',
 	            views:{
-								'dashboard@home':{
-									templateUrl: 'views/homeSearch.html',
-									}
-							}
+					'dashboard@home':{
+						templateUrl: 'views/homeSearch.html',
+					}
+				}
 	        })
 
 	        .state('recipe', {
@@ -59,11 +59,11 @@ var app = angular
 	            templateUrl: 'views/recipe.html',
 	            controller: 'recipesCtrl',
 	            resolve: {
-								getRecipe: function(sampleData, $stateParams) {
-									var recipeId = $stateParams.idNumber;
-									return sampleData.getRecipe(recipeId);
-								}
-							}
+					getRecipe: function(sampleData, $stateParams) {
+						var recipeId = $stateParams.idNumber;
+						return sampleData.getRecipe(recipeId);
+					}
+				}
 	        })
 	        .state('login', {
 	            url: '/login',

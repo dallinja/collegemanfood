@@ -164,6 +164,11 @@ angular.module('cmf')
 				},
 				{
 					amount: 1,
+					unit: 'Tbs',
+					ingredient: 'pepper'
+				},
+				{
+					amount: 1,
 					unit: 'tsp',
 					ingredient: 'salt'
 				}
